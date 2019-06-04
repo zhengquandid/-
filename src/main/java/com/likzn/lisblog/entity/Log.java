@@ -9,21 +9,20 @@ import javax.persistence.Table;
 
 /**
  * @auther: Li jx
- * @date: 2019/6/3 17:39
+ * @date: 2019/6/3 19:11
  * @description:
  */
-@Getter
-@Setter
 @Entity
-@Table(name = "blog_comment")
-public class Comment extends BaseEntity {
+@Table(name = "blog_log")
+@Setter
+@Getter
+public class Log extends BaseEntity {
     @Id
     private Long id;
 
-    private String email;
+    private String ip;
 
-    private String content;
+    private String operateBy;
 
-    private String name;
 
 }

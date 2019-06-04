@@ -1,5 +1,8 @@
 package com.likzn.lisblog.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,10 +13,12 @@ import javax.persistence.Table;
  * @description:
  */
 @Entity
-@Table(name = "blog_article_info")
+@Table(name = "BLOG_ARTICLE_INFO")
+@Getter
+@Setter
 public class ArticleInfo extends BaseEntity{
     @Id
-    private int id;
+    private Long id;
     private String summary;
     private String title;
     private int traffic;

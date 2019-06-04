@@ -2,6 +2,7 @@ package com.likzn.lisblog.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 /**
  * @auther: Li jx
@@ -10,10 +11,11 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@Component
 public class AdminSummaryDTO {
-    private Integer blogSum;
-    private Integer blogCommetSum;
-    private Integer commentSum;
-    private Integer visitSum;
+    private Long blogSum;
+    private Long blogCommentSum;
+    private Long commentSum;
+    private Long visitSum;
 
 }

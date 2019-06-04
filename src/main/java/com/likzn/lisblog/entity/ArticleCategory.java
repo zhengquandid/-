@@ -1,5 +1,8 @@
 package com.likzn.lisblog.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
@@ -9,10 +12,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="blog_article_category")
+@Setter
+@Getter
 public class ArticleCategory extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String categoryName;
     private int number;
 }
