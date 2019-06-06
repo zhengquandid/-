@@ -10,4 +10,5 @@ public class LisblogApplication {
         SpringApplication.run(LisblogApplication.class, args);
     }
 
+
 }

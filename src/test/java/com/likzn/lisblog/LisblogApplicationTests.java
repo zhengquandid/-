@@ -15,7 +15,7 @@ public class LisblogApplicationTests {
     ArticleInfoService articleInfoService;
     @Test
     public void contextLoads() {
-        System.out.println(articleInfoService.count());
+//        System.out.println(articleInfoService.count());
 
     }
 

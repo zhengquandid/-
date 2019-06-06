@@ -1,5 +1,9 @@
 package com.likzn.lisblog.controller;
 
+import com.likzn.lisblog.dao.ArticleCategoryRepository;
+import com.likzn.lisblog.dao.ArticleInfoRepository;
+import com.likzn.lisblog.dao.CommentRepository;
+import com.likzn.lisblog.dao.LogRepository;
 import com.likzn.lisblog.dto.AdminSummaryDTO;
 import com.likzn.lisblog.service.ArticleCategoryService;
 import com.likzn.lisblog.service.ArticleInfoService;
@@ -23,4 +27,12 @@ public class BaseController {
     LogService logService;
     @Autowired
     AdminSummaryDTO adminSummaryDTO;
+    @Autowired
+    ArticleCategoryRepository articleCategoryRepository;
+    @Autowired
+    ArticleInfoRepository articleInfoRepository;
+    @Autowired
+    LogRepository logRepository;
+    @Autowired
+    CommentRepository commentRepository;
 }

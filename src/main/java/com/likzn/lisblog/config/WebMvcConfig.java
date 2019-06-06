@@ -1,6 +1,7 @@
 package com.likzn.lisblog.config;
 
 import com.likzn.lisblog.config.interceptor.AdminInterceptor;
+import com.likzn.lisblog.config.interceptor.ForeInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     private AdminInterceptor adminInterceptor;
+    @Autowired
+    private ForeInterceptor foreInterceptor;
 
 
     @Override
@@ -25,6 +28,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(foreInterceptor).addPathPatterns("/**").excludePathPatterns("/login","/admin/**","/js/**","/css/**","/img/**","/fonts/**");
         registry.addInterceptor(adminInterceptor).addPathPatterns("/admin/**").excludePathPatterns("/login","/admin/login");
     }
 

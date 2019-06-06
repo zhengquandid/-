@@ -23,10 +23,7 @@ $(function(){
     });
 
 
-    $(".testimonial-slider").owlCarousel({
-        singleItem : true,
-        autoPlay:true,
-    });
+
 
 
     // menu toggle 

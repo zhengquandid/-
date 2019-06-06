@@ -3,9 +3,7 @@ package com.likzn.lisblog.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @auther: Li jx
@@ -18,6 +16,7 @@ import javax.persistence.Table;
 @Table(name = "blog_comment")
 public class Comment extends BaseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String email;
@@ -25,5 +24,7 @@ public class Comment extends BaseEntity {
     private String content;
 
     private String name;
+
+
 
 }
