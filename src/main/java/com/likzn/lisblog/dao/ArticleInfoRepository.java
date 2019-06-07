@@ -1,6 +1,8 @@
 package com.likzn.lisblog.dao;
 
 import com.likzn.lisblog.entity.ArticleInfo;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Repository;
  * @description:
  */
 @Repository
+@DynamicInsert
+@DynamicUpdate
 public interface ArticleInfoRepository extends CrudRepository<ArticleInfo, Long> {
 
-
+    Iterable<ArticleInfo> findAllByCategoryId(Long id);
 }

@@ -2,10 +2,10 @@ package com.likzn.lisblog.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @auther: Li jx
@@ -16,14 +16,17 @@ import javax.persistence.Table;
 @Table(name = "BLOG_ARTICLE_INFO")
 @Getter
 @Setter
+@DynamicInsert
+@DynamicUpdate
 public class ArticleInfo extends BaseEntity{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String summary;
     private String title;
-    private int traffic;
+    private Integer traffic;
     private String content;
-    private int isTop;
-    private int categoryId;
+    private Boolean isTop;
+    private Long categoryId;
 
 }

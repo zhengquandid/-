@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date: 2019/6/4 14:53
  * @description:
  */
-
 public class BaseService {
     @Autowired
     ArticleCategoryRepository articleCategoryRepository;

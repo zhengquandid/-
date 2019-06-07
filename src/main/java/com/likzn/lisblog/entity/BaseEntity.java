@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -19,12 +17,16 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public class BaseEntity {
 
-    @Column(name = "create_time")
     public Timestamp createTime;
-    public Date updateTime;
+
+    public Timestamp updateTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public Timestamp getCreateTime() {
         return createTime;
+    }
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    public Timestamp getUpdateTime() {
+        return updateTime;
     }
 }

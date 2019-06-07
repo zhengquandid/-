@@ -1,11 +1,9 @@
 package com.likzn.lisblog.controller;
 
 import com.likzn.lisblog.dto.AdminSummaryDTO;
+import com.likzn.lisblog.dto.ArticleDTO;
 import com.likzn.lisblog.dto.CategoryDTO;
-import com.likzn.lisblog.entity.ArticleCategory;
-import com.likzn.lisblog.entity.Comment;
-import com.likzn.lisblog.entity.Log;
-import com.likzn.lisblog.entity.User;
+import com.likzn.lisblog.entity.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
@@ -107,9 +105,58 @@ public class AdminController extends BaseController{
     //修改分类
     @PostMapping("/updateCategory")
     public void updateCategory(@RequestBody CategoryDTO categoryDTO) {
-
         articleCategoryRepository.updateCategoryById(categoryDTO.getCategoryName(), categoryDTO.getId());
+    }
+
+    //增加一片文章
+    @PostMapping("/addArticle")
+    public void addArticle(@RequestBody ArticleDTO articleDTO) {
+        articleInfoService.addArticle(articleDTO);
+
+    }
+    //更新一片文章
+    @PostMapping("/updateArticle")
+    public void updateArticle(@RequestBody ArticleInfo articleInfo) {
+        ArticleInfo articleInfo1 = articleInfoRepository.findById(articleInfo.getId()).get();
+        articleInfo.setTraffic(articleInfo1.getTraffic());
+        articleInfo.setCreateTime(articleInfo1.getCreateTime());
+        articleInfo.setUpdateTime(articleInfo1.getUpdateTime());
+
+        articleInfoRepository.save(articleInfo);
 
     }
 
+    //列出文章总览
+    @PostMapping("/listArticle")
+    public List<ArticleInfo> listArticle() {
+        List<ArticleInfo> list = new ArrayList();
+        for (ArticleInfo articleInfo : articleInfoRepository.findAll()) {
+            list.add(articleInfo);
+        }
+        return list;
+    }
+
+    //列出指定标签文章
+    @PostMapping("/listArticle/{id}")
+    public List<ArticleInfo> listArticleByCategoryId(@PathVariable Long id) {
+        List<ArticleInfo> list = new ArrayList();
+        for (ArticleInfo articleInfo : articleInfoRepository.findAllByCategoryId(id)) {
+
+            list.add(articleInfo);
+        }
+        return list;
+    }
+
+    //删除指定文章
+    @DeleteMapping("/deleteArticle/{id}")
+    public void deleteArticle(@PathVariable Long id) {
+        articleInfoRepository.deleteById(id);
+        log.info("接口/admin/deleteArticle/{} ", id);
+    }
+
+    //列出指定文章
+    @PostMapping("/article/{id}")
+    public ArticleInfo articleById(@PathVariable Long id) {
+        return articleInfoRepository.findById(id).get();
+    }
 }

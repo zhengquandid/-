@@ -2,6 +2,8 @@ package com.likzn.lisblog.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -16,6 +18,8 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Component
+@DynamicInsert
+@DynamicUpdate
 public class Log extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

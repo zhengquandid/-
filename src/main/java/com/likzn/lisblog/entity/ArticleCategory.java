@@ -2,6 +2,8 @@ package com.likzn.lisblog.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -14,10 +16,12 @@ import javax.persistence.*;
 @Table(name="blog_article_category")
 @Setter
 @Getter
+@DynamicInsert
+@DynamicUpdate
 public class ArticleCategory extends BaseEntity{
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String categoryName;
-    private int number;
+    private Integer number;
 }

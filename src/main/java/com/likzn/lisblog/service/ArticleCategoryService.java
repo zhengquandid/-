@@ -1,5 +1,7 @@
 package com.likzn.lisblog.service;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
  * @description:
  */
 @Service
+@DynamicInsert
+@DynamicUpdate
 public class ArticleCategoryService extends BaseService{
 
 }
