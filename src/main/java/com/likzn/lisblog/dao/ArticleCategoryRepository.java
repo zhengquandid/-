@@ -27,4 +27,13 @@ public interface ArticleCategoryRepository extends CrudRepository<ArticleCategor
     @Query(value = "UPDATE  blog_article_category set category_name=:name where id = :id", nativeQuery = true)
     int updateCategoryById(@Param("name") String name,@Param("id") Long id);
 
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE  blog_article_category set number=number +1 where id = :id", nativeQuery = true)
+    int addNumber(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE  blog_article_category set number=number -1 where id = :id", nativeQuery = true)
+    int reduceNumber(@Param("id") Long id);
 }

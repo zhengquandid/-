@@ -31,7 +31,6 @@ $(document).ready(function () {
             });
         }
     });
-
     $.ajax({
         url: "http://localhost:8080/admin/listLog",
         type: "POST",
@@ -48,9 +47,6 @@ $(document).ready(function () {
             $('#log-table').dataTable();
         }
     });
-
-
-
 });
 
 function deleteComment(id) {

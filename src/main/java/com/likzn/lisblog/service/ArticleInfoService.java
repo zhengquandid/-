@@ -33,4 +33,30 @@ public class ArticleInfoService extends BaseService {
 
     }
 
+
+    public ArticleInfo selectArticleById(Long id) {
+        ArticleInfo articleInfo = articleInfoRepository.findById(id).get();
+        articleInfo.setTraffic(articleInfo.getTraffic() + 1);
+        articleInfoRepository.save(articleInfo);
+
+        return articleInfo;
+    }
+
+    public void updateArticle(ArticleInfo articleInfo) {
+        ArticleInfo articleInfo1 = articleInfoRepository.findById(articleInfo.getId()).get();
+        if (!articleInfo.getCategoryId().equals(articleInfo1.getCategoryId())) {
+            Long oldCategoryId = articleInfo1.getCategoryId();
+            if (articleCategoryRepository.findById(oldCategoryId).isPresent()) {
+                articleCategoryRepository.reduceNumber(oldCategoryId);
+
+            }
+            articleCategoryRepository.addNumber(articleInfo.getCategoryId());
+        }
+        articleInfo.setTraffic(articleInfo1.getTraffic());
+        articleInfo.setCreateTime(articleInfo1.getCreateTime());
+        articleInfo.setUpdateTime(articleInfo1.getUpdateTime());
+
+        articleInfoRepository.save(articleInfo);
+    }
+
 }

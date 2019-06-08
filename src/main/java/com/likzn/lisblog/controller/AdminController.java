@@ -117,13 +117,7 @@ public class AdminController extends BaseController{
     //更新一片文章
     @PostMapping("/updateArticle")
     public void updateArticle(@RequestBody ArticleInfo articleInfo) {
-        ArticleInfo articleInfo1 = articleInfoRepository.findById(articleInfo.getId()).get();
-        articleInfo.setTraffic(articleInfo1.getTraffic());
-        articleInfo.setCreateTime(articleInfo1.getCreateTime());
-        articleInfo.setUpdateTime(articleInfo1.getUpdateTime());
-
-        articleInfoRepository.save(articleInfo);
-
+        articleInfoService.updateArticle(articleInfo);
     }
 
     //列出文章总览
@@ -150,8 +144,9 @@ public class AdminController extends BaseController{
     //删除指定文章
     @DeleteMapping("/deleteArticle/{id}")
     public void deleteArticle(@PathVariable Long id) {
-        articleInfoRepository.deleteById(id);
         log.info("接口/admin/deleteArticle/{} ", id);
+        articleCategoryRepository.reduceNumber(articleInfoRepository.findById(id).get().getCategoryId());
+        articleInfoRepository.deleteById(id);
     }
 
     //列出指定文章
