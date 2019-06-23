@@ -2,15 +2,11 @@ $('#addComment').click(function () {
     var name = $('#name').val();
     var email = $('#email').val();
     var content = $('#commentContent').val();
-
-
     var comment = {
         name: name,
         email: email,
         content: content
     };
-
-
     $.ajax({
         url: "http://localhost:8080/api/addComment",
         type: "POST",

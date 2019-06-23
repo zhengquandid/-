@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $.ajax({
         url: "http://localhost:8080/admin/summary",
         type: "GET",
@@ -11,7 +10,6 @@ $(document).ready(function () {
             $('#visitSum').html(json.visitSum);
         }
     });
-
     $.ajax({
         url: "http://localhost:8080/admin/listComment",
         type: "POST",
@@ -48,7 +46,6 @@ $(document).ready(function () {
         }
     });
 });
-
 function deleteComment(id) {
     $('#confirmBtn').attr("commentId", id);
     $('#commentModel').modal();
