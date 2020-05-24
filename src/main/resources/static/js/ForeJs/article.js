@@ -1,7 +1,6 @@
 $(document).ready(function () {
     var articleId = getUrlParam("articleId");
     $.ajax({
-
         url: "http://localhost:8080/api/article/sort/" + articleId,
         type: "post",
         dataType: "json",
@@ -9,12 +8,8 @@ $(document).ready(function () {
             $('#articleTitle').html(json.title);
             $('#articleCreateBy').html("创建时间:"+json.createTime);
             $('#articleContent').html(json.content);
-
-
         }
-    });
-
-
+    }); 
 });
 
 
